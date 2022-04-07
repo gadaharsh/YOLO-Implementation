@@ -40,6 +40,7 @@ def main(type="image"):
 
             img_in = tf.expand_dims(img, 0)
             img_in = utils.transform_images(img_in, 416)
+
             pred_bbox = model.predict(img_in)
             pred_bbox = [tf.reshape(x, (-1, tf.shape(x)[-1])) for x in pred_bbox]
             pred_bbox = tf.concat(pred_bbox, axis=0)
